@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Roll a Ball.unity
+    guid: 1bdb50df3058e9942a97a95fe1f33c91
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7429ad93a22ae3742b90daa136081297, type: 2}
   m_UseUCBPForAssetBundles: 0
