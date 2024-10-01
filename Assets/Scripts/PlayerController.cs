@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +12,15 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     private int count;
+    private int numPickups = 6;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI winText;
+
+    void Start( ){
+        count = 0;
+        winText.text = "";
+        SetCountText();
+    }
 
     void OnMove(InputValue value)
     {
@@ -27,10 +38,18 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "PickUp"){
             other.gameObject.SetActive(false);
             count += 1;
+            SetCountText();
         }
     }
 
-    void Start( ){
-        count = 0;
+    private void SetCountText()
+    {
+        scoreText.text = "Score: " + count.ToString();
+        if(count >= numPickups)
+        {
+            winText.text = "You win!";
+        }
     }
+
+
 }
