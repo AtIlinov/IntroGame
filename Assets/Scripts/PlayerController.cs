@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Numerics;
+using Vector2 = UnityEngine.Vector2;
+using UnityEngine.UIElements;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,11 +19,25 @@ public class PlayerController : MonoBehaviour
     private int numPickups = 6;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI veloText;
+    public TextMeshProUGUI posText;
 
+    public Vector3 oldPos;
+
+    
     void Start( ){
+
         count = 0;
+        oldPos.x = 0;
+        oldPos.y = 0;
+        oldPos.z = 0;
         winText.text = "";
         SetCountText();
+    }
+
+    void Update(){
+        debugPlayer();
+        oldPos = transform.position;
     }
 
     void OnMove(InputValue value)
@@ -49,6 +67,14 @@ public class PlayerController : MonoBehaviour
         {
             winText.text = "You win!";
         }
+    }
+
+    private void debugPlayer(){
+       
+        posText.text = "Position: " + transform.position.ToString();
+        float velocity = (transform.position - oldPos).magnitude / Time.deltaTime;
+        veloText.text = "Velocity: " + velocity.ToString();
+        
     }
 
 
