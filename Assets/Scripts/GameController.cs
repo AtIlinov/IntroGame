@@ -46,13 +46,15 @@ public class GameController : MonoBehaviour
 
         for(int i = 0; i < pickUps.Length; i++)
         {
-
+            new_distance = 0;
+            //Debug.Log(i);
             // only proceed if pickUp is visible
             if (pickUps[i].gameObject.activeSelf == true){
 
                 // find distance between pickUp and ball locations
                 new_distance = Vector3.Distance(ball_loc, pickUps[i].transform.position);
-
+                    //Debug.Log(master_distance.ToString());
+                    //Debug.Log(new_distance.ToString());
                 if (i == 0)
                 {
                     master_distance = new_distance;
